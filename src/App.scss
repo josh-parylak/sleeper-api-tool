@@ -1,0 +1,45 @@
+$primary: #f5fe49;
+$secondary: #a5af58;
+$black: #000000;
+$dark: #15181a;
+$gray: #545f66;
+$accent: #829399;
+$white: #ffffff;
+
+@import url("https://fonts.googleapis.com/css2?family=Righteous&family=Titillium+Web:wght@200;400;600&display=swap");
+
+$heading: "Righteous", sans-serif;
+$base: "Titillium Web", sans-serif;
+
+@mixin heading {
+	font-family: $heading;
+	font-weight: 400;
+}
+
+@mixin heavy {
+	font-family: $base;
+	font-weight: 600;
+}
+
+@mixin base {
+	font-family: $base;
+	font-weight: 400;
+}
+
+@mixin light {
+	font-family: $base;
+	font-weight: 200;
+}
+
+@mixin container {
+	max-width: 1440px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+html {
+	background-color: $dark;
+	color: $white;
+
+	@include base;
+}

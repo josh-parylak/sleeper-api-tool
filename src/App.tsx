@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/header";
+import Dashboard from "./components/dashboard";
+import axios from "axios";
+
+axios
+	.get("https://api.sleeper.app/v1/league/1002655054991659008")
+	.then(function (response: any) {
+		localStorage.setItem("league", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
+
+axios
+	.get("https://api.sleeper.app/v1/league/1002655054991659008/rosters")
+	.then(function (response: any) {
+		localStorage.setItem("rosters", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
+
+axios
+	.get("https://api.sleeper.app/v1/league/1002655054991659008/users")
+	.then(function (response: any) {
+		localStorage.setItem("users", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Header />
+			<Dashboard />
+		</div>
+	);
 }
 
 export default App;

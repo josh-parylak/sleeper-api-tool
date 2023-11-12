@@ -1,0 +1,54 @@
+@import "../../App.scss";
+
+header {
+	.heading {
+		@include container;
+		display: flex;
+		gap: 1rem;
+
+		align-items: center;
+		// justify-content: center;
+		padding: 1rem;
+
+		.logo-text-wrap {
+			.logo-text {
+				font-size: 2rem;
+				line-height: 1;
+				color: $primary;
+				@include heading;
+				text-transform: uppercase;
+			}
+		}
+
+		.league-data {
+			margin-left: auto;
+			text-align: right;
+
+			.main {
+				@include heading;
+				color: $secondary;
+				font-size: 1.25rem;
+			}
+			.sub {
+				font-size: 0.75rem;
+				@include light;
+				display: flex;
+				gap: 1rem;
+
+				.sub-data {
+					span {
+						@include heavy;
+						color: $accent;
+					}
+				}
+			}
+		}
+	}
+	svg {
+		height: 30px;
+		width: auto;
+		path {
+			fill: $primary;
+		}
+	}
+}
