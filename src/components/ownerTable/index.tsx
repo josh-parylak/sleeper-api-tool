@@ -119,6 +119,7 @@ function OwnerTable() {
 
 	return (
 		<div className="dash-section table">
+			<div className="dash-section-heading">Team Stats</div>
 			<DataTable
 				columns={columns}
 				data={list}
