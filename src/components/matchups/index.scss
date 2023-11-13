@@ -1,0 +1,67 @@
+@import "../../App.scss";
+.week {
+	text-align: center;
+}
+
+.week-menu {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin: 1rem 0;
+
+	button {
+		border: 1px solid $secondary;
+		border-radius: 8px;
+		padding: 0.25rem 0.5rem;
+		background-color: transparent;
+		color: $primary;
+		cursor: pointer;
+		@include heavy;
+
+		&.active {
+			color: $dark;
+			background-color: $primary;
+			border-color: $primary;
+			pointer-events: none;
+		}
+
+		&:hover {
+			color: $dark;
+			background-color: $secondary;
+		}
+	}
+}
+#dashboard.matchup-list {
+	grid-template-columns: 1fr 1fr 1fr;
+
+	.dash-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		// gap: 0.125rem;
+
+		hr {
+			width: 25%;
+			border: 1px solid $accent;
+		}
+
+		.team-block {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			gap: 0.5rem;
+			justify-content: space-between;
+			.team-name {
+				@include heavy;
+				color: $primary;
+				font-size: 1.5rem;
+				text-align: center;
+			}
+
+			.points {
+				@include heavy;
+				font-size: 2rem;
+			}
+		}
+	}
+}

@@ -43,3 +43,40 @@ html {
 
 	@include base;
 }
+
+.main-content {
+	@include container;
+}
+
+h2 {
+	@include heading;
+	font-size: 2rem;
+	color: $primary;
+}
+
+.tab-menu {
+	border-bottom: 1px solid $gray;
+	margin-bottom: 1rem;
+
+	button {
+		background-color: transparent;
+		color: $primary;
+		@include base;
+		border: 1px solid $gray;
+		border-radius: 8px 8px 0 0;
+		font-size: 1rem;
+		padding: 0.25rem 1rem;
+		cursor: pointer;
+
+		&.active {
+			color: $dark;
+			background-color: $primary;
+			pointer-events: none;
+		}
+
+		&:hover {
+			color: $white;
+			background-color: $secondary;
+		}
+	}
+}

@@ -4,7 +4,6 @@ import "./index.scss";
 import { LanguageServiceMode } from "typescript";
 
 const league = JSON.parse(localStorage.getItem("league") ?? "");
-console.log(league);
 
 function Header() {
 	return (

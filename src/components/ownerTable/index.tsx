@@ -117,8 +117,6 @@ function OwnerTable() {
 		}
 	);
 
-	console.log(list);
-
 	return (
 		<div className="dash-section table">
 			<DataTable

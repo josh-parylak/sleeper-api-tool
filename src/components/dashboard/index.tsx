@@ -2,6 +2,7 @@ import React from "react";
 import OwnerTable from "../ownerTable";
 import Trophy from "../../svgs/trophy";
 import "./index.scss";
+import { getUserRosterById } from "../../utilities";
 
 const league = JSON.parse(localStorage.getItem("league") ?? "");
 const rosters = JSON.parse(localStorage.getItem("rosters") ?? "");
@@ -43,13 +44,6 @@ const bestStreak = structuredClone(rosters).sort((a: any, b: any) => {
 		b.metadata.streak - a.metadata.streak || b.settings.wins - a.settings.wins
 	);
 });
-
-const getUserRosterById = (id: string) => {
-	const userRoster = users.find(
-		(user: { user_id: string }) => user.user_id === id
-	);
-	return userRoster;
-};
 
 const leader = getUserRosterById(rankings[0].owner_id);
 const pfLeader = getUserRosterById(pfRankings[0].owner_id);
