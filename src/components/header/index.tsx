@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "../../svgs/logo";
 import "./index.scss";
-import { LanguageServiceMode } from "typescript";
 
 const league = JSON.parse(localStorage.getItem("league") ?? "");
 
