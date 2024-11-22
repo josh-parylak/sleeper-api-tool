@@ -40,6 +40,33 @@ $gap: 2rem;
 				svg {
 					height: 25px;
 				}
+
+				&.w-control {
+					justify-content: space-between;
+					align-items: center;
+					button {
+						padding: 0;
+						background-color: transparent;
+						border: 0;
+						cursor: pointer;
+
+						svg {
+							stroke: $primary;
+							path {
+								stroke: $primary;
+							}
+						}
+
+						&:hover {
+							svg {
+								stroke: $secondary;
+								path {
+									stroke: $secondary;
+								}
+							}
+						}
+					}
+				}
 			}
 
 			.dash-line {

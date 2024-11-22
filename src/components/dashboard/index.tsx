@@ -3,6 +3,7 @@ import OwnerTable from "../ownerTable";
 import Trophy from "../../svgs/trophy";
 import "./index.scss";
 import { getUserRosterById } from "../../utilities";
+import Players from "../players";
 
 const league = JSON.parse(localStorage.getItem("league") ?? "");
 const rosters = JSON.parse(localStorage.getItem("rosters") ?? "");
@@ -50,9 +51,14 @@ const pfLeader = getUserRosterById(pfRankings[0].owner_id);
 const streakLeader = getUserRosterById(bestStreak[0].owner_id);
 const winner = getWinner();
 
-const dashLine = (label: string, value: string) => {
+const dashLine = (
+	needsKey: boolean,
+	index: number,
+	label: string,
+	value: string
+) => {
 	return (
-		<div className="dash-line">
+		<div className="dash-line" key={needsKey ? index : label}>
 			<div className="dash-line-label">{label}</div>
 			<div className="dash-line-value">{value}</div>
 		</div>
@@ -68,16 +74,18 @@ function Dashboard() {
 						<div className="dash-section-heading">
 							<Trophy /> Reigning Champion
 						</div>
-						{dashLine("Team Name", winner.metadata.team_name)}
-						{dashLine("Owner", winner.display_name)}
+						{dashLine(false, 0, "Team Name", winner.metadata.team_name)}
+						{dashLine(false, 0, "Owner", winner.display_name)}
 					</div>
 				</div>
 				<div className="dash-card">
 					<div className="dash-section">
 						<div className="dash-section-heading">Current League Leaders</div>
-						{dashLine("First Place", leader.metadata.team_name)}
-						{dashLine("Most Poinst", pfLeader.metadata.team_name)}
+						{dashLine(false, 0, "First Place", leader.metadata.team_name)}
+						{dashLine(false, 0, "Most Poinst", pfLeader.metadata.team_name)}
 						{dashLine(
+							false,
+							0,
 							"Best Streak",
 							`${streakLeader.metadata.team_name} (${bestStreak[0].metadata.streak})`
 						)}
@@ -87,17 +95,15 @@ function Dashboard() {
 						{rankings.map((team: any, index: number) => {
 							const u = getUserRosterById(team.owner_id);
 							return dashLine(
+								true,
+								index,
 								`${index + 1}. ${u.metadata.team_name ?? u.display_name}`,
 								`${team.settings.wins}-${team.settings.losses}-${team.settings.ties}`
 							);
 						})}
 					</div>
 				</div>
-				<div className="dash-card">
-					<div className="dash-section">
-						<div className="dash-section-heading">Position Leaders</div>
-					</div>
-				</div>
+				<Players />
 			</div>
 			<div className="standings dash-card">
 				<OwnerTable />

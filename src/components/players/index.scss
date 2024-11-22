@@ -1,0 +1,34 @@
+@import "../../App.scss";
+.players-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	.player {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+
+		.name {
+			@include light;
+		}
+
+		.score {
+			&.up {
+				color: lime;
+
+				&::before {
+					content: "+";
+				}
+			}
+
+			&.down {
+				color: rgb(255, 48, 48);
+
+				&::before {
+					content: "-";
+				}
+			}
+		}
+	}
+}

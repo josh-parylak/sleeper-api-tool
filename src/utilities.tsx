@@ -30,7 +30,7 @@ export const getPerformanceData = () => {
 		matchupData = localStorage.getItem("fullMatchup");
 		matchupData = JSON.parse(matchupData);
 	}
-	console.log(matchupData);
+
 	const rosterIDs = rosters.map((el: any) => {
 		return { rID: el.roster_id, oID: el.owner_id };
 	});

@@ -42,6 +42,26 @@ html {
 	color: $white;
 
 	@include base;
+
+	/* width */
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: $gray;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: $primary;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: $secondary;
+	}
 }
 
 .main-content {
