@@ -60,7 +60,7 @@ function Players() {
 
 	return (
 		<div className="dash-card">
-			<div className="dash-section">
+			{/* <div className="dash-section">
 				<div className="dash-section-heading w-control">
 					Trending Up
 					<button onClick={() => fetchTrendingData()}>
@@ -72,7 +72,7 @@ function Players() {
 			<div className="dash-section">
 				<div className="dash-section-heading">Trending Down</div>
 				<div className="players-list">{listPlayers(trendingDown, "down")}</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

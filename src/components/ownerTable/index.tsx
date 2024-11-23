@@ -15,8 +15,12 @@ interface DataRow {
 	ptsA: number;
 }
 
-const rosters = JSON.parse(localStorage.getItem("rosters") ?? "");
-const users = JSON.parse(localStorage.getItem("users") ?? "");
+const rosters = localStorage.getItem("rosters")
+	? JSON.parse(localStorage.getItem("rosters") ?? "")
+	: null;
+const users = localStorage.getItem("users")
+	? JSON.parse(localStorage.getItem("users") ?? "")
+	: null;
 
 createTheme(
 	"streamer",

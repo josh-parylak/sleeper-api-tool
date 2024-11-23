@@ -103,7 +103,7 @@ function Dashboard() {
 						})}
 					</div>
 				</div>
-				<Players />
+				{/* <Players /> */}
 			</div>
 			<div className="standings dash-card">
 				<OwnerTable />

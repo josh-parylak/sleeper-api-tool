@@ -1,8 +1,11 @@
 import axios from "axios";
 
-const league = JSON.parse(localStorage.getItem("league") ?? "");
-const rosters = JSON.parse(localStorage.getItem("rosters") ?? "");
-const users = JSON.parse(localStorage.getItem("users") ?? "");
+const rosters = localStorage.getItem("rosters")
+	? JSON.parse(localStorage.getItem("rosters") ?? "")
+	: null;
+const users = localStorage.getItem("users")
+	? JSON.parse(localStorage.getItem("users") ?? "")
+	: null;
 
 export const getUserRosterById = (id: string) => {
 	const userRoster = users.find(

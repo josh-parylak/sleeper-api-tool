@@ -1,10 +1,16 @@
 import React from "react";
 import Logo from "../../svgs/logo";
 import "./index.scss";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
-const league = JSON.parse(localStorage.getItem("league") ?? "");
+// const league = JSON.parse(localStorage.getItem("league") ?? "");
 
 function Header() {
+	const [league, setLeague] = useLocalStorage("league", {
+		name: "",
+		season: "",
+		league_id: "",
+	});
 	return (
 		<header className="App-header">
 			<div className="heading">

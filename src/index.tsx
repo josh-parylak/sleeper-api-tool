@@ -5,42 +5,49 @@ import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 
 const leagueId = "1124833456052793344";
+localStorage.setItem("league", "");
+localStorage.setItem("nfl", "");
+localStorage.setItem("rosters", "");
+localStorage.setItem("users", "");
+localStorage.setItem("trendingUp", "");
+localStorage.setItem("trendingDown", "");
+localStorage.setItem("fullMatchup", "");
 
 axios
-  .get("https://api.sleeper.app/v1/state/nfl")
-  .then(function (response: any) {
-    localStorage.setItem("nfl", JSON.stringify(response.data));
-  })
-  .catch(function (error: any) {
-    console.log(error);
-  });
+	.get("https://api.sleeper.app/v1/state/nfl")
+	.then(function (response: any) {
+		localStorage.setItem("nfl", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
 
 axios
-  .get(`https://api.sleeper.app/v1/league/${leagueId}`)
-  .then(function (response: any) {
-    localStorage.setItem("league", JSON.stringify(response.data));
-  })
-  .catch(function (error: any) {
-    console.log(error);
-  });
+	.get(`https://api.sleeper.app/v1/league/${leagueId}`)
+	.then(function (response: any) {
+		localStorage.setItem("league", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
 
 axios
-  .get(`https://api.sleeper.app/v1/league/${leagueId}/rosters`)
-  .then(function (response: any) {
-    localStorage.setItem("rosters", JSON.stringify(response.data));
-  })
-  .catch(function (error: any) {
-    console.log(error);
-  });
+	.get(`https://api.sleeper.app/v1/league/${leagueId}/rosters`)
+	.then(function (response: any) {
+		localStorage.setItem("rosters", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
 
 axios
-  .get(`https://api.sleeper.app/v1/league/${leagueId}/users`)
-  .then(function (response: any) {
-    localStorage.setItem("users", JSON.stringify(response.data));
-  })
-  .catch(function (error: any) {
-    console.log(error);
-  });
+	.get(`https://api.sleeper.app/v1/league/${leagueId}/users`)
+	.then(function (response: any) {
+		localStorage.setItem("users", JSON.stringify(response.data));
+	})
+	.catch(function (error: any) {
+		console.log(error);
+	});
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
