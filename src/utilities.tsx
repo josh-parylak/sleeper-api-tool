@@ -1,4 +1,5 @@
 import axios from "axios";
+import { leagueId } from ".";
 
 const rosters = localStorage.getItem("rosters")
 	? JSON.parse(localStorage.getItem("rosters") ?? "")
@@ -62,9 +63,7 @@ const refreshMatchupData = () => {
 	let matchupData: any = [];
 	weeks.forEach((el: number) => {
 		axios
-			.get(
-				`https://api.sleeper.app/v1/league/1002655054991659008/matchups/${el}`
-			)
+			.get(`https://api.sleeper.app/v1/league/${leagueId}/matchups/${el}`)
 			.then(function (response: any) {
 				matchupData.push(...response.data);
 				if (el === 18) {
