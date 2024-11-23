@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getUserByRosterId } from "../../utilities";
 import "./index.scss";
+import { leagueId } from "../..";
 
 const counter = [1, 2, 3, 4, 5, 6];
 
@@ -12,9 +13,7 @@ function Matchups() {
 
 	useEffect(() => {
 		axios
-			.get(
-				`https://api.sleeper.app/v1/league/1002655054991659008/matchups/${week}`
-			)
+			.get(`https://api.sleeper.app/v1/league/${leagueId}/matchups/${week}`)
 			.then(function (response: any) {
 				setMatchups(response.data);
 			})
