@@ -99,15 +99,30 @@ function Dashboard() {
 						<div className="dash-section-heading">
 							<Trophy /> Reigning Champion
 						</div>
-						{dashLine(false, 0, "Team Name", winner.metadata.team_name)}
+						{dashLine(
+							false,
+							0,
+							"Team Name",
+							winner.metadata.team_name ?? winner.display_name
+						)}
 						{dashLine(false, 0, "Owner", winner.display_name)}
 					</div>
 				</div>
 				<div className="dash-card">
 					<div className="dash-section">
 						<div className="dash-section-heading">Current League Leaders</div>
-						{dashLine(false, 0, "First Place", leader.metadata.team_name)}
-						{dashLine(false, 0, "Most Poinst", pfLeader.metadata.team_name)}
+						{dashLine(
+							false,
+							0,
+							"First Place",
+							leader.metadata.team_name ?? leader.display_name
+						)}
+						{dashLine(
+							false,
+							0,
+							"Most Points",
+							pfLeader.metadata.team_name ?? pfLeader.display_name
+						)}
 						{dashLine(
 							false,
 							0,
