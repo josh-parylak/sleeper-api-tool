@@ -4,7 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 
-const leagueId = "1124833456052793344";
+export const leagueId = "1124833456052793344";
 
 axios
 	.get("https://api.sleeper.app/v1/state/nfl")

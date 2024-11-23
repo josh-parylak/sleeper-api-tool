@@ -3,13 +3,19 @@ import Refresh from "../../svgs/refresh";
 import axios from "axios";
 import players from "../../assets/players.json";
 import "./index.scss";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 function Players() {
+	const loading = useLocalStorage("trendingUp", false);
 	const [trendingUp, setTrendingUp] = useState(
-		JSON.parse(localStorage.getItem("trendingUp") ?? "")
+		localStorage.getItem("trendingUp")
+			? JSON.parse(localStorage.getItem("trendingUp") ?? "")
+			: ""
 	);
 	const [trendingDown, setTrendingDown] = useState(
-		JSON.parse(localStorage.getItem("trendingDown") ?? "")
+		localStorage.getItem("trendingDown")
+			? JSON.parse(localStorage.getItem("trendingDown") ?? "")
+			: ""
 	);
 
 	const fetchTrendingData = () => {
@@ -58,9 +64,13 @@ function Players() {
 		return html;
 	};
 
+	if (!loading) {
+		return <span className="loader"></span>;
+	}
+
 	return (
 		<div className="dash-card">
-			{/* <div className="dash-section">
+			<div className="dash-section">
 				<div className="dash-section-heading w-control">
 					Trending Up
 					<button onClick={() => fetchTrendingData()}>
@@ -72,7 +82,7 @@ function Players() {
 			<div className="dash-section">
 				<div className="dash-section-heading">Trending Down</div>
 				<div className="players-list">{listPlayers(trendingDown, "down")}</div>
-			</div> */}
+			</div>
 		</div>
 	);
 }

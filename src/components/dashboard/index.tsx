@@ -5,9 +5,23 @@ import "./index.scss";
 import { getUserRosterById } from "../../utilities";
 import Players from "../players";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import axios from "axios";
+import { leagueId } from "../..";
 
 function Dashboard() {
 	const [loading, setLoading] = useLocalStorage("rosters", false);
+
+	if (!loading) {
+		axios
+			.get(`https://api.sleeper.app/v1/league/${leagueId}/rosters`)
+			.then(function (response: any) {
+				localStorage.setItem("rosters", JSON.stringify(response.data));
+			})
+			.catch(function (error: any) {
+				console.log(error);
+			});
+		return <span className="loader"></span>;
+	}
 
 	const league = localStorage.getItem("league")
 		? JSON.parse(localStorage.getItem("league") ?? "")
@@ -77,10 +91,6 @@ function Dashboard() {
 		);
 	};
 
-	if (!loading) {
-		return <span className="loader"></span>;
-	}
-
 	return (
 		<div id="dashboard">
 			<div className="dash-col">
@@ -118,7 +128,7 @@ function Dashboard() {
 						})}
 					</div>
 				</div>
-				{/* <Players /> */}
+				<Players />
 			</div>
 			<div className="standings dash-card">
 				<OwnerTable />
