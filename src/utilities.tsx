@@ -29,9 +29,7 @@ export const getPerformanceData = () => {
 		matchupData = JSON.parse(matchupData);
 	} else {
 		matchupData = [];
-		refreshMatchupData();
-		matchupData = localStorage.getItem("fullMatchup");
-		matchupData = JSON.parse(matchupData);
+		matchupData = refreshMatchupData();
 	}
 
 	const rosterIDs = rosters.map((el: any) => {
@@ -59,7 +57,7 @@ export const getPerformanceData = () => {
 	return teamData;
 };
 
-export const refreshMatchupData = () => {
+const refreshMatchupData = () => {
 	const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 	let matchupData: any = [];
 	weeks.forEach((el: number) => {
@@ -77,4 +75,6 @@ export const refreshMatchupData = () => {
 				console.log(error);
 			});
 	});
+
+	return matchupData;
 };

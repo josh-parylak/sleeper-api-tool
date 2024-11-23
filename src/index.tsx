@@ -5,13 +5,6 @@ import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 
 const leagueId = "1124833456052793344";
-localStorage.setItem("league", "");
-localStorage.setItem("nfl", "");
-localStorage.setItem("rosters", "");
-localStorage.setItem("users", "");
-localStorage.setItem("trendingUp", "");
-localStorage.setItem("trendingDown", "");
-localStorage.setItem("fullMatchup", "");
 
 axios
 	.get("https://api.sleeper.app/v1/state/nfl")

@@ -3,10 +3,15 @@ import Header from "./components/header";
 import Dashboard from "./components/dashboard";
 import Matchups from "./components/matchups";
 import Performance from "./components/performance";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 function App() {
 	const [active, setActive] = useState("dashboard");
+	const [loading, setLoading] = useLocalStorage("league", false);
 
+	if (!loading) {
+		return <span className="loader"></span>;
+	}
 	return (
 		<div className="App">
 			<Header />
